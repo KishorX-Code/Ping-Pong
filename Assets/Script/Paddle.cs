@@ -35,6 +35,5 @@ public class Paddle : MonoBehaviour
         Vector2 velo = rb2d.velocity;
         velo.y = movespeed * movement;
         rb2d.velocity = velo;
-        
     }
 }
