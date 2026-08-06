@@ -14,8 +14,15 @@ public class Ball : MonoBehaviour
    private void Start()
     {
         push();
+        GameManager.instance.onReset += ResetBall;
+    }
+    private void ResetBall()
+    {
+        ResetBallPosition();
+        push();
     }
     private void push()
+        
     {
         
         Vector2 dir = Random.value < 0.5f ? Vector2.left : Vector2.right;
@@ -24,7 +31,7 @@ public class Ball : MonoBehaviour
         rb2d.velocity = dir * movespeed;
     }
     
-    private void ResetBall()
+    private void ResetBallPosition()
     {
         float posY = Random.Range(-starty, starty);
         Vector2 position = new Vector2(startX, posY);
@@ -35,9 +42,9 @@ public class Ball : MonoBehaviour
         Scorezone scorezone = collision.GetComponent<Scorezone>();
         if (scorezone)
         {
-            gameManager.OnScoreZoneReached(scorezone.id);
-            ResetBall();
-            push();
+            GameManager.instance.OnScoreZoneReached(scorezone.id);
+            
+            
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
