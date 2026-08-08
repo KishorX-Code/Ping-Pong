@@ -11,10 +11,12 @@ public class Ball : MonoBehaviour
     private float startX = 0f;
     public float starty = 4f;
     public float speedMultipler = 1.1f;
+    
    private void Start()
     {
         push();
         GameManager.instance.onReset += ResetBall;
+        
     }
     private void ResetBall()
     {
@@ -54,5 +56,6 @@ public class Ball : MonoBehaviour
         {
             rb2d.velocity *= speedMultipler;
         }
+       
     }
 }

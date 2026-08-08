@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int scorePlayer1, scorePlayer2;
     public ScoreText scoreTextLeft, scoreTextRight;
     public Action onReset;
+    public GameObject winPanel;
+    public TMPro.TextMeshProUGUI winText;
     private void Awake()
     {
         if (instance)
@@ -39,5 +41,23 @@ public class GameManager : MonoBehaviour
     {
         scoreTextLeft.setscore(scorePlayer1);
         scoreTextRight.setscore(scorePlayer2);
+    }
+    private void CheckWinner()
+    {
+        if (scorePlayer1 > +10)
+        {
+            winText.text = "PLAYER 1 WINS";
+            winText.color = Color.blue;
+            winPanel.SetActive(true);
+            Time.timeScale = 0;
+
+        }
+        else if(scorePlayer2 >= 10){
+            winText.text = "PLAYER 2 WINS";
+            winText.color = Color.yellow;
+            winPanel.SetActive(true);
+            Time.timeScale = 0;
+
+        } 
     }
 }
