@@ -11,6 +11,8 @@ public class Ball : MonoBehaviour
     private float startX = 0f;
     public float starty = 4f;
     public float speedMultipler = 1.1f;
+    public AudioSource audioSource;
+    public AudioClip ballsound;
     
    private void Start()
     {
@@ -51,11 +53,13 @@ public class Ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        audioSource.PlayOneShot(ballsound);
         Paddle paddle = collision.collider.GetComponent<Paddle>();
         if (paddle)
         {
             rb2d.velocity *= speedMultipler;
         }
+        
        
     }
 }
