@@ -1,26 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PaddleAI : MonoBehaviour
 {
-    public Transform ball;
     public Rigidbody2D rb2d;
-    public float movespeed = 3f;
-   private void Update()
-    {
-        float movement = 0f;
-        if(ball.position.y > transform.position.y)
-        {
-            movement = 1f;
-        }
-        else if(ball.position.y < transform.position.y)
-        {
-            movement = -1f;
-        }
-        Vector2 velo = rb2d. velocity;
-        velo.y = movespeed * movement;
-        rb2d.velocity = velo;
+    public Transform ball;
+    public float movespeed = 5f;
+    public float deadZone = 0.05f;
 
+    private void FixedUpdate()
+    {
+        if (ball == null || rb2d == null)
+            return;
+
+        float difference = ball.position.y - rb2d.position.y;
+
+        float direction = 0f;
+
+        if (Mathf.Abs(difference) > deadZone)
+        {
+            direction = Mathf.Sign(difference);
+        }
+
+        Vector2 targetPosition = rb2d.position;
+        targetPosition.y += direction * movespeed * Time.fixedDeltaTime;
+
+        rb2d.MovePosition(targetPosition);
     }
 }
