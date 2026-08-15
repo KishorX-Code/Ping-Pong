@@ -33,7 +33,10 @@ This Game Has Three Scenes Main Menu, Game Scenes and Aiplay Scenes. The Main Me
 
 ## Game Video
 
-https://github.com/user-attachments/assets/015f9c34-aa25-4524-9014-5824cc034b9d
+https://github.com/user-attachments/assets/015f9c34-aa25-4524-9014-5824cc034b9d 
+
+## Game video Link 
+https://youtu.be/3yjJ0Nlkvj0
 
 
 
